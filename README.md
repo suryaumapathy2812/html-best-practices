@@ -4,9 +4,7 @@ Translations: [English (en)](README.md) · [Dansk (da)](README.da.md) · [Deutsc
 
 For writing maintainable and scalable HTML documents
 
-
 ## General
-
 
 ### Start with DOCTYPE
 
@@ -25,7 +23,6 @@ Good:
       ...
     </html>
 
-
 ### Don’t use legacy or obsolete DOCTYPE
 
 DOCTYPE is not for DTD anymore, be simple.
@@ -38,7 +35,6 @@ Bad:
 Good:
 
     <!DOCTYPE html>
-
 
 ### Don’t use XML Declaration
 
@@ -53,7 +49,6 @@ Good:
 
     <!DOCTYPE html>
 
-
 ### Don’t use character references as much as possible
 
 If you write an HTML document with UTF-8, almost all characters (including
@@ -67,7 +62,6 @@ Good:
 
     <p><small>Copyright © 2014 W3C<sup>®</sup></small></p>
 
-
 ### Escape `&`, `<`, `>`, `"`, and `'` with named character references
 
 These characters should escape always for a bug-free HTML document.
@@ -79,21 +73,6 @@ Bad:
 Good:
 
     <h1>The &quot;&amp;&quot; character</h1>
-
-
-### Use numeric character references for control or invisible characters
-
-These characters are easily mistaken for another character. And also spec does
-not guarantee to define a human readable name for these characters.
-
-Bad:
-
-    <p>This book can read in 1 hour.</p>
-
-Good:
-
-    <p>This book can read in 1&#xA0;hour.</p>
-
 
 ### Put white spaces around comment contents
 
@@ -107,7 +86,6 @@ Bad:
 Good:
 
     <!-- This section is non-normative -->
-
 
 ### Don’t omit closing tag
 
@@ -127,22 +105,6 @@ Good:
       </body>
     </html>
 
-
-### Don’t mix empty element format
-
-Consistency is a key for readability.
-
-Bad:
-
-    <img alt="HTML Best Practices" src="/img/logo.png">
-    <hr />
-
-Good:
-
-    <img alt="HTML Best Practices" src="/img/logo.png">
-    <hr>
-
-
 ### Don’t put white spaces around tags and attribute values
 
 There is no reason for doing this.
@@ -154,7 +116,6 @@ Bad:
 Good:
 
     <h1 class="title">HTML Best Practices</h1>
-
 
 ### Don’t mix character cases
 
@@ -172,7 +133,6 @@ Also Good:
 
     <A HREF="#general">General</A>
 
-
 ### Don’t mix quotation marks
 
 Same as above.
@@ -184,7 +144,6 @@ Bad:
 Good:
 
     <img alt="HTML Best Practices" src="/img/logo.jpg">
-
 
 ### Don’t separate attributes with two or more white spaces
 
@@ -198,7 +157,6 @@ Good:
 
     <input name="q" type="search">
 
-
 ### Omit boolean attribute value
 
 It’s easy to write, isn’t it?
@@ -211,37 +169,6 @@ Good:
 
     <audio autoplay src="/audio/theme.mp3">
 
-
-### Omit namespaces
-
-SVG and MathML can be used directly in an HTML document.
-
-Bad:
-
-    <svg xmlns="http://www.w3.org/2000/svg">
-      ...
-    </svg>
-
-Good:
-
-    <svg>
-      ...
-    </svg>
-
-
-### Don’t use XML attributes
-
-We write an HTML document.
-
-Bad:
-
-    <span lang="ja" xml:lang="ja">...</span>
-
-Good:
-
-    <span lang="ja">...</span>
-
-
 ### Don’t mix `data-*`, Microdata, and RDFa Lite attributes with common attributes
 
 A tag string can be very complicated. This simple rule helps reading such tag
@@ -249,12 +176,11 @@ string.
 
 Bad:
 
-    <img alt="HTML Best Practices" data-height="31" data-width="88" itemprop="image" src="/img/logo.png">
+    <img alt="HTML Best Practices" data-height="31" data-width="88" src="/img/logo.png">
 
 Good:
 
-    <img alt="HTML Best Practices" src="/img/logo.png" data-width="88" data-height="31" itemprop="image">
-
+    <img alt="HTML Best Practices" src="/img/logo.png" data-width="88" data-height="31">
 
 ### Prefer default implicit ARIA semantics
 
@@ -276,9 +202,7 @@ Good:
 
     <hr>
 
-
 ## The root element
-
 
 ### Add `lang` attribute
 
@@ -292,7 +216,6 @@ Good:
 
     <html lang="en-US">
 
-
 ### Keep `lang` attribute value as short as possible
 
 Japanese is only used in Japan. So country code is not necessary.
@@ -305,6 +228,22 @@ Good:
 
     <html lang="ja">
 
+### Specify document character encoding
+
+UTF-8 is not default in all browsers yet.
+
+Bad:
+
+    <head>
+      <title>HTML Best Practices</title>
+    </head>
+
+Good:
+
+    <head>
+      <meta charset="UTF-8">
+      <title>HTML Best Practices</title>
+    </head>
 
 ### Avoid `data-*` as much as possible
 
@@ -322,9 +261,7 @@ Good:
     ...
     <strong class="warning">Do not wash!</strong>
 
-
 ## Document metadata
-
 
 ### Add `title` element
 
@@ -342,7 +279,6 @@ Good:
       <meta charset="UTF-8">
       <title>HTML Best Practices</title>
     </head>
-
 
 ### Don’t use `base` element
 
@@ -365,7 +301,6 @@ Good:
       ...
     </head>
 
-
 ### Specify MIME type of minor linked resources
 
 This is a hint how application handles this resource.
@@ -382,7 +317,6 @@ Good:
     <link href="/feed" rel="alternate" type="application/rss+xml">
     <link href="/css/screen.css" rel="stylesheet">
 
-
 ### Don’t link to `favicon.ico`
 
 Almost all browsers fetch `/favicon.ico` automatically and asynchronously.
@@ -394,20 +328,6 @@ Bad:
 Good:
 
     <!-- Place `favicon.ico` in the root directory. -->
-
-
-### Add `apple-touch-icon` link
-
-A default request path for touch icon was changed suddenly.
-
-Bad:
-
-    <!-- Hey Apple! Please download `/apple-touch-icon.png`! -->
-
-Good:
-
-    <link href="/apple-touch-icon.png" rel="apple-touch-icon">
-
 
 ### Add `title` attribute to alternate stylesheets
 
@@ -422,7 +342,6 @@ Good:
 
     <link href="/css/screen.css" rel="stylesheet">
     <link href="/css/high-contrast.css" rel="alternate stylesheet" title="High contrast">
-
 
 ### For URL, use `link` element
 
@@ -442,25 +361,6 @@ Good:
       ...
     </section>
 
-
-### Specify document character encoding
-
-UTF-8 is not default in all browsers yet.
-
-Bad:
-
-    <head>
-      <title>HTML Best Practices</title>
-    </head>
-
-Good:
-
-    <head>
-      <meta charset="UTF-8">
-      <title>HTML Best Practices</title>
-    </head>
-
-
 ### Don’t use legacy character encoding format
 
 HTTP headers should be specified by a server, be simple.
@@ -472,7 +372,6 @@ Bad:
 Good:
 
     <meta charset="UTF-8">
-
 
 ### Specify character encoding at first
 
@@ -495,7 +394,6 @@ Good:
       ...
     </head>
 
-
 ### Use UTF-8
 
 With UTF-8, you are free to use Emoji.
@@ -507,7 +405,6 @@ Bad:
 Good:
 
     <meta charset="UTF-8">
-
 
 ### Omit `type` attribute for CSS
 
@@ -524,7 +421,6 @@ Good:
     <style>
       ...
     </style>
-
 
 ### Don’t comment out contents of `style` element
 
@@ -543,7 +439,6 @@ Good:
     <style>
       ...
     </style>
-
 
 ### Don’t mix tag for CSS and JavaScript
 
@@ -567,9 +462,7 @@ Also good:
     <script src="/js/main.js"></script>
     <link href="/css/screen.css" rel="stylesheet">
 
-
 ## Sections
-
 
 ### Add `body` element
 
@@ -595,7 +488,6 @@ Good:
       </body>
     </html>
 
-
 ### Forget about `hgroup` element
 
 This element is not used very much.
@@ -612,7 +504,6 @@ Good:
     <h1>HTML Best Practices</h1>
     <p>For writing maintainable and scalable HTML documents.</p>
 
-
 ### Use `address` element only for contact information
 
 `address` element is for email address, social network account, street address,
@@ -626,9 +517,7 @@ Good:
 
     <address>Contact: <a href="https://twitter.com/hail2u_">Kyo Nagashima</a></address>
 
-
 ## Grouping content
-
 
 ### Don’t start with newline in `pre` element
 
@@ -645,7 +534,6 @@ Good:
     <pre>&lt;!DOCTYPE html&gt;
     </pre>
 
-
 ### Use appropriate element in `blockquote` element
 
 `blockquote` element’s content is a quote, not a chunks of characters.
@@ -659,7 +547,6 @@ Good:
     <blockquote>
       <p>For writing maintainable and scalable HTML documents.</p>
     </blockquote>
-
 
 ### Don’t include attribution directly in `blockquote` element
 
@@ -691,7 +578,6 @@ Also good:
       <figcaption>— HTML Best Practices</figcaption>
     </figure>
 
-
 ### Write one list item per line
 
 Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
@@ -711,7 +597,6 @@ Good:
       <li>Sections</li>
       ...
     </ul>
-
 
 ### Use `type` attribute for `ol` element
 
@@ -747,7 +632,6 @@ Good:
       </ol>
     </body>
 
-
 ### Don’t use `dl` for dialogue
 
 `dl` element is restricted to an association list in HTML.
@@ -780,7 +664,6 @@ Good:
     <p>Costello: When you pay off the first baseman every month, who gets the money?</p>
     <p>Abbott: Every dollar of it.</p>
 
-
 ### Place `figcaption` element as first or last child of `figure` element
 
 Spec disallows `figcaption` element in the middle of `figure` element.
@@ -801,7 +684,6 @@ Good:
       <figcaption>“HTML Best Practices” Cover Art</figcaption>
     </figure>
 
-
 ### Use `main` element
 
 `main` element can be used wrapping contents.
@@ -817,7 +699,6 @@ Good:
     <main>
       ...
     </main>
-
 
 ### Avoid `div` element as much as possible
 
@@ -835,9 +716,7 @@ Good:
       ...
     </section>
 
-
 ## Text-level semantics
-
 
 ### Don’t split same link that can be grouped
 
@@ -858,7 +737,6 @@ Good:
       <p>A community maintaining and evolving HTML since 2004.</p>
     </a>
 
-
 ### Use `download` attribute for downloading a resource
 
 It will force browsers to download linked resource to the storage.
@@ -870,7 +748,6 @@ Bad:
 Good:
 
     <a download href="/downloads/offline.zip">offline version</a>
-
 
 ### Use `rel`, `hreflang`, and `type` attribute if needed
 
@@ -884,7 +761,6 @@ Good:
 
     <a href="/ja/pdf" hreflang="ja" rel="alternate" type="application/pdf">Japanese PDF version</a>
 
-
 ### Clear link text
 
 Link text should be the label of its linked resource.
@@ -896,7 +772,6 @@ Bad:
 Good:
 
     <p><a href="/pdf" rel="alternate" type="application/pdf">PDF version</a> is also available.</p>
-
 
 ### Don’t use `em` element for warning or caution
 
@@ -910,7 +785,6 @@ Good:
 
     <strong>Caution!</strong>
 
-
 ### Avoid `s`, `i`, `b`, and `u` element as much as possible
 
 These elements’ semantics is too difficult to humans.
@@ -922,7 +796,6 @@ Bad:
 Good:
 
     <span class="icon-search" aria-hidden="true"></span>
-
 
 ### Don’t put quotes to `q` element
 
@@ -940,7 +813,6 @@ Also good:
 
     “For writing maintainable and scalable HTML documents”
 
-
 ### Add `title` attribute to `abbr` element
 
 There is no other way to represent its expansion.
@@ -953,7 +825,6 @@ Good:
 
     <abbr title="HTML Best Practices">HBP</abbr>
 
-
 ### Markup `ruby` element verbosely
 
 `ruby` element support is not completed across the modern browsers.
@@ -965,7 +836,6 @@ Bad:
 Good:
 
     <ruby>HTML<rp> (</rp><rt>えいちてぃーえむえる</rt><rp>) </rp></ruby>
-
 
 ### Add `datetime` attribute to non-machine-readable `time` element
 
@@ -980,7 +850,6 @@ Good:
 
     <time datetime="2014-12-19">Dec 19, 2014</time>
 
-
 ### Specify code language with `class` attribute prefixed with `language-`
 
 This is not a formal way, but spec mentions this.
@@ -992,7 +861,6 @@ Bad:
 Good:
 
     <code class="language-html">&lt;!DOCTYPE html&gt;</code>
-
 
 ### Keep `kbd` element as simple as possible
 
@@ -1006,7 +874,6 @@ Good:
 
     <kbd>Ctrl+F5</kbd>
 
-
 ### Avoid `span` element as much as possible
 
 `span` element is an element of last resort.
@@ -1018,7 +885,6 @@ Bad:
 Good:
 
     HTML <em>Best</em> Practices
-
 
 ### Break after `br` element
 
@@ -1033,7 +899,6 @@ Good:
     <p>HTML<br>
     Best<br>
     Practices</p>
-
 
 ### Don’t use `br` element only for presentational purpose
 
@@ -1051,9 +916,7 @@ Good:
     <p><label>Rule description:<br>
     <textarea name="rule-description"></textarea></label></p>
 
-
 ## Edits
-
 
 ### Don’t stride `ins` and `del` element over other elements
 
@@ -1071,9 +934,7 @@ Good:
 
     <del><p>Don’t trust!</p></del>
 
-
 ## Embedded content
-
 
 ### Provide fallback `img` element for `picture` element
 
@@ -1097,7 +958,6 @@ Good:
       <img src="/img/logo.jpg">
     </picture>
 
-
 ### Add `alt` attrbute to `img` element if needed
 
 `alt` attribute helps those who cannot process images or have image loading
@@ -1111,7 +971,6 @@ Good:
 
     <img alt="HTML Best Practices" src="/img/logo.png">
 
-
 ### Empty `alt` attribute if possible
 
 If the image is supplemental, there is equivalent content somewhere in the near.
@@ -1123,7 +982,6 @@ Bad:
 Good:
 
     <img alt="" src="/img/icon/help.png"> Help
-
 
 ### Omit `alt` attribute if possible
 
@@ -1138,7 +996,6 @@ Good:
     <img src="captcha.cgi?id=82174" title="CAPTCHA">
     (If you cannot see the image, you can use an <a href="?audio">audio</a> test instead.)
 
-
 ### Empty `iframe` element
 
 There is some restriction in its content. Being empty is always safe.
@@ -1152,7 +1009,6 @@ Bad:
 Good:
 
     <iframe src="/ads/default.html"></iframe>
-
 
 ### Markup `map` element content
 
@@ -1182,7 +1038,6 @@ Good:
       </p>
     </map>
 
-
 ### Provide fallback content for `audio` or `video` element
 
 Fallback content is needed for newly introduced elements in HTML.
@@ -1204,9 +1059,7 @@ Good:
       <iframe src="//www.youtube.com/embed/..." allowfullscreen></iframe>
     </video>
 
-
 ## Tabular data
-
 
 ### Write one cell per line
 
@@ -1225,7 +1078,6 @@ Good:
       <td>The root Element</td>
       <td>Sections</td>
     </tr>
-
 
 ### Use `th` element for header cell
 
@@ -1279,9 +1131,7 @@ Good:
       </tbody>
     </table>
 
-
 ## Forms
-
 
 ### Wrap form control with `label` element
 
@@ -1295,7 +1145,6 @@ Good:
 
     <p><label>Query: <input name="q" type="text"></label></p>
 
-
 ### Omit `for` attribute if possible
 
 `label` element can contain some form elements.
@@ -1308,7 +1157,6 @@ Good:
 
     <label>Query: <input name="q" type="text"></label>
 
-
 ### Use appropriate `type` attribute for `input` element
 
 With appropriate `type`, a browser gives tiny features to the `input` element.
@@ -1320,7 +1168,6 @@ Bad:
 Good:
 
     <label>Search keyword: <input name="q" type="search"></label>
-
 
 ### Add `value` attribute to `input type="submit"`
 
@@ -1335,7 +1182,6 @@ Good:
 
     <input type="submit" value="Search">
 
-
 ### Add `title` attribute to `input` element when there is `pattern` attribute
 
 If input text does not match to `pattern` attribute, the value of `title`
@@ -1349,7 +1195,6 @@ Good:
 
     <input name="security-code" pattern="[0-9]{3}" title="A security code is a number in three figures." type="text">
 
-
 ### Don’t use `placeholder` attribute for labeling
 
 `label` element is for a label, `placeholder` attribute is for a short hint.
@@ -1361,7 +1206,6 @@ Bad:
 Good:
 
     <label>Email: <input name="email" placeholder="john.doe@example.com" type="text"></label>
-
 
 ### Write one `option` element per line
 
@@ -1381,7 +1225,6 @@ Good:
       <option label="Sections">
     </datalist>
 
-
 ### Add `max` attribute to `progress` element
 
 With `max` attribute, the `value` attribute can be written in an easy format.
@@ -1393,7 +1236,6 @@ Bad:
 Good:
 
     <progress max="100" value="50"> 50%</progress>
-
 
 ### Add `min` and `max` attribute to `meter` element
 
@@ -1407,7 +1249,6 @@ Bad:
 Good:
 
     <meter min="0" max="1024" value="512"> 512GB used (1024GB total)</meter>
-
 
 ### Place `legend` element as the first child of `fieldset` element
 
@@ -1429,9 +1270,7 @@ Good:
       ...
     </fieldset>
 
-
 ## Scripting
-
 
 ### Omit `type` attribute for JavaScript
 
@@ -1449,7 +1288,6 @@ Good:
     <script>
       ...
     </script>
-
 
 ### Don’t comment out contents of `script` element
 
@@ -1477,7 +1315,6 @@ Good:
       ...
     </script>
 
-
 ### Don’t use script-injected `script` element
 
 `async` attribute is the best for both simplicity and performance.
@@ -1495,9 +1332,7 @@ Good:
 
     <script async defer src="https://example.com/widget.js"></script>
 
-
 ## Other
-
 
 ### Indent consistently
 
@@ -1506,9 +1341,9 @@ Indentation is important for readability.
 Bad:
 
     <html>
-    	<head>
-    	  ...
-    	</head>
+     <head>
+       ...
+     </head>
       <body>
         ...
       </body>
@@ -1524,7 +1359,6 @@ Good:
         ...
       </body>
     </html>
-
 
 ### Use absolute path for internal links
 
@@ -1542,7 +1376,6 @@ Good:
     ...
     <p>You can find more at <a href="/contact.html">contact page</a>.</p>
 
-
 ### Don’t use protocol-relative URL for external resources
 
 With protocol, you can load external resources reliably and safely.
@@ -1555,14 +1388,10 @@ Good:
 
     <script src="https://example.com/js/library.js">
 
-
-
-
 ## Contributors
 
 - [@hail2u_](https://github.com/hail2u)
 - [@momdo](https://github.com/momdo)
-
 
 ## Translators
 
@@ -1578,7 +1407,6 @@ Good:
 - [@techhtml](https://github.com/techhtml)
 - [@umutphp](https://github.com/umutphp)
 - [@wesleynepo](https://github.com/wesleynepo)
-
 
 ## License
 
